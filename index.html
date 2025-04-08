@@ -4,6 +4,7 @@
   <!-- Meta and Title -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <title>Veltheris</title>
 
   <!-- Favicon and Styles -->
@@ -13,20 +14,140 @@
 <body>
 
   <!-- ==================== NAVIGATION BAR ==================== -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">
-        <img src="images/veltheris.png" alt="Veltheris Logo" style="height: 40px;">
-        <span>Veltheris</span>
-      </div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#comic">Comic</a></li>
-        <li><a href="#giveaway">Giveaway</a></li>
-        <li><a href="#shop">Shop</a></li>
-      </ul>
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="images/veltheris.png" alt="Veltheris Logo" class="logo" />
+      <span class="site-name">Veltheris</span>
     </div>
+
+    <div class="nav-right">
+      <!-- SEARCH AREA -->
+      <div class="search-container">
+        <!-- ==================== SEARCH BAR (Hidden Initially) ==================== -->
+        <input type="text" placeholder="Search Veltheris..." class="search-bar" id="search-bar" />
+        <i class="fas fa-magnifying-glass search-icon" id="search-icon"></i>
+      </div>
+      <!-- MENU ICON -->
+      <i class="fas fa-bars menu-icon" id="menu-icon"></i>
+    </div>    
   </nav>
+  
+  <!-- === Slide-In Menu === -->
+  <div class="slide-menu" id="slide-menu">
+    <div class="close-menu" id="close-menu">✖</div> <!-- New close icon -->
+
+    <div class="menu-item">
+      <a href="#" class="main-link">Home</a>
+      <div class="submenu">
+        <a href="#">House</a>
+        <a href="#">Garden</a>
+        <a href="#">Kitchen</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">World</a>
+      <div class="submenu">
+        <a href="#">Continents</a>
+        <a href="#">Maps</a>
+        <a href="#">Climates</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Characters</a>
+      <div class="submenu">
+        <a href="#">Main</a>
+        <a href="#">Supporting</a>
+        <a href="#">Villains</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Lore</a>
+      <div class="submenu">
+        <a href="#">Myths</a>
+        <a href="#">Legends</a>
+        <a href="#">Artifacts</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#" class="main-link">Shop</a>
+      <div class="submenu">
+        <a href="#">House</a>
+        <a href="#">Garden</a>
+        <a href="#">Kitchen</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Comic library</a>
+      <div class="submenu">
+        <a href="#">Continents</a>
+        <a href="#">Maps</a>
+        <a href="#">Climates</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Vacations</a>
+      <div class="submenu">
+        <a href="#">Main</a>
+        <a href="#">Supporting</a>
+        <a href="#">Villains</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Quiz</a>
+      <div class="submenu">
+        <a href="#">Myths</a>
+        <a href="#">Legends</a>
+        <a href="#">Artifacts</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#" class="main-link">Progress</a>
+      <div class="submenu">
+        <a href="#">House</a>
+        <a href="#">Garden</a>
+        <a href="#">Kitchen</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Games</a>
+      <div class="submenu">
+        <a href="#">Continents</a>
+        <a href="#">Maps</a>
+        <a href="#">Climates</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Jobs</a>
+      <div class="submenu">
+        <a href="#">Main</a>
+        <a href="#">Supporting</a>
+        <a href="#">Villains</a>
+      </div>
+    </div>
+  
+    <div class="menu-item">
+      <a href="#" class="main-link">Contact</a>
+      <div class="submenu">
+        <a href="#">Myths</a>
+        <a href="#">Legends</a>
+        <a href="#">Artifacts</a>
+      </div>
+    </div>
+
+      <img src="images/pic5.png" alt="Menu Bottom Image" class="menu-bottom-image" />
+
+  </div>
+  
 
   <!-- ==================== HERO SECTION ==================== -->
   <section class="hero-section">
@@ -37,110 +158,87 @@
   </section>
 
 
-    <!-- ========== STAR ANIMATION ========== -->
-    <div class="stars">
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <!-- Add more if you want more stars -->
-    </div>
+  <!-- ========== STAR ANIMATION ========== -->
+  <div class="stars" id="stars-container"></div>
     
 
-    <!-- ☁️ Caelum & Nyxar Cloud Ride -->
+  <!-- ☁️ Caelum & Nyxar Cloud Ride -->
   <div class="cloud-ride">
     <img src="images/caelum-nyxar-cloud.png" alt="Caelum and Nyxar on a Cloud" class="cloud-ride-image">
   </div>
 
 
-  <!-- ==================== CONTENT WRAPPER ==================== -->
-  <div class="content-wrapper">    
-
-    <!-- ==================== ABOUT SECTION ==================== -->
-    <div class="speech-box animated-section">
+  <div class="speech-container">
+    <!-- === Speech Box 1 === -->
+    <div class="speech-box active">
       <img src="images/pic1.png" alt="Caelum" class="speaker-img">
       <div class="speech-content">
-        <section class="animated-section">
+        <section>
           <h2 id="about">🧬 About Caelum</h2>
           <p>Caelum is a mysterious cosmic being born from a falling star... Get official Caelum merch and art made by cosmic fans around the world.</p>
         </section>
       </div>
     </div>
 
-    <!-- ==================== COMIC SECTION ==================== -->
-    <div class="speech-box animated-section">
-      <img src="images/pic2.png" alt="Caelum" class="speaker-img">
+    <!-- === Speech Box 2 === -->
+    <div class="speech-box">
+      <img src="images/pic2.png" alt="Nyxar" class="speaker-img">
       <div class="speech-content">
-        <section class="animated-section">
-          <h2 id="comic">📖 The Comic</h2>
-          <p>Follow Caelum's adventures as he battles void creatures and explores forgotten galaxies. Discover official merch and cosmic stories.</p>
+        <section>
+          <h2 id="nyxar">🌌 About Nyxar</h2>
+          <p>Nyxar is Caelum’s best friend and partner, formed from stardust and dreams. She helps Caelum navigate his past and discover his purpose.</p>
         </section>
       </div>
     </div>
 
-    <!-- ==================== GIVEAWAY SECTION ==================== -->
-    <div class="speech-box animated-section">
-      <img src="images/pic3.png" alt="Caelum" class="speaker-img">
+    <!-- === Speech Box 3 === -->
+    <div class="speech-box">
+      <img src="images/pic3.png" alt="Veltheris Lore" class="speaker-img">
       <div class="speech-content">
-        <section class="animated-section">
-          <h2 id="giveaway">🎁 Monthly Giveaway</h2>
-          <p>Win Caelum stickers, art prints, and digital surprises! Cosmic fans can enter to win exclusive content every month.</p>
+        <section>
+          <h2 id="lore">📜 Veltheris Lore</h2>
+          <p>Veltheris is a realm of shattered constellations, cosmic storms, and ancient memories. It exists between time and imagination.</p>
         </section>
       </div>
     </div>
 
-    <!-- ==================== SHOP SECTION ==================== -->
-    <div class="speech-box animated-section">
-      <img src="images/pic4.png" alt="Caelum" class="speaker-img">
-      <div class="speech-content">
-        <section class="animated-section">
-          <h2 id="shop">🛍️ The Star Shop</h2>
-          <p>Explore official Caelum merch and art made by cosmic fans worldwide. Grab your stardust gear now!</p>
-        </section>
-      </div>
+      <!-- === Speech Box 4 === -->
+  <div class="speech-box">
+    <img src="images/pic4.png" alt="Mythical Beasts" class="speaker-img">
+    <div class="speech-content">
+      <section>
+        <h2>🐉 Mythical Beasts</h2>
+        <p>Legends whisper of phoenix-lions and thunder whales roaming the skies of Veltheris, creatures born from ancient starlight and forgotten spells.</p>
+      </section>
     </div>
-
-    <div class="speech-box animated-section">
-      <div class="section-block">
-        <h2>About Veltheris</h2>
-        <p>Veltheris is a world of wonder, magic, and mystery—home to Caelum and Nyxar's unforgettable journey.</p>
-      </div>
-    </div>
-    
-    <div class="speech-box animated-section">
-      <div class="section-block">
-        <h2>The Journey Begins</h2>
-        <p>Follow our heroes as they traverse luminous valleys, shimmering rivers, and ancient skies.</p>
-      </div>
-    </div>
-    
-    <div class="speech-box animated-section">
-      <div class="section-block">
-        <h2>Meet the Guardians</h2>
-        <p>From sky sentinels to forest spirits, discover the protectors of Veltheris’ delicate balance.</p>
-      </div>
-    </div>    
   </div>
+
+  <!-- === Speech Box 5 === -->
+  <div class="speech-box">
+    <img src="images/pic5.png" alt="Artifact of Eonlight" class="speaker-img">
+    <div class="speech-content">
+      <section>
+        <h2>🔮 Artifact of Eonlight</h2>
+        <p>This legendary orb is said to contain memories of collapsed galaxies. Many seek it. Few survive its visions.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- === Speech Box 6 === -->
+  <div class="speech-box">
+    <img src="images/pic1.png" alt="Echoes of Creation" class="speaker-img">
+    <div class="speech-content">
+      <section>
+        <h2>🌠 Echoes of Creation</h2>
+        <p>Every star holds a story. Every silence in the void hums with the echoes of what once was... and what may return.</p>
+      </section>
+    </div>
+  </div>
+
+
+    <!-- Add more boxes here, always outside of each other -->
+  </div>
+
 
   <!-- ==================== FOOTER SECTION ==================== -->
   <footer class="site-footer">
@@ -156,6 +254,7 @@
     window.scrollTo(0, 0);
   };
 </script>
+
 
 </body>
 </html>

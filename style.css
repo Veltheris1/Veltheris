@@ -24,15 +24,16 @@ body {
   font-family: sans-serif;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 30, 0.3); /* a faint night blue overlay */
-  z-index: -1;
+/* Prevent scrolling by default */
+body.lock-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Allow scrolling when unlocked */
+body.unlock-scroll {
+  overflow-y: auto;
+  height: auto;
 }
 
 
@@ -49,31 +50,61 @@ body::before {
   z-index: 1;
 }
 
+/* Container for each star */
 .star {
+  position: absolute;                      /* Positioned freely on screen */
+  width: 12px;                             /* Container width */
+  height: 12px;                            /* Container height */
+  animation:
+    twinkle 2s infinite ease-in-out,        /* ✨ Bring back the sparkle! */
+    float 10s infinite linear alternate;
+}
+
+/* A line of the ✖ star */
+.star-line {
   position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  box-shadow: 0 0 6px white;
-  opacity: 0;
-  animation: twinkle 3s infinite;
+  background-color: #ffeb3b; /* Start as yellow */
+  box-shadow: 0 0 6px #ffeb3b, 0 0 12px #fff200;
+  animation: 
+    twinkle 2s infinite ease-in-out,
+    colorShift 4s infinite alternate; /* 🌈 New color shifting animation */
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+
+
+/* Vertical line of the star */
+.star-line.vertical {
+  width: 1px;
+  height: 6px;
+  left: 3px;
+  top: 0;
+}
+
+/* Horizontal line of the star */
+.star-line.horizontal {
+  width: 6px;
+  height: 1px;
+  top: 2.5px;
+  left: 0;
 }
 
 /* Unique positions and timings */
-.star:nth-child(1)  { top: 10%; left: 5%;  width: 3px; height: 3px; animation-delay: 0s; }
-.star:nth-child(2)  { top: 20%; left: 15%; width: 2px; height: 2px; animation-delay: 1s; }
-.star:nth-child(3)  { top: 30%; left: 25%; width: 4px; height: 4px; animation-delay: 2s; }
-.star:nth-child(4)  { top: 40%; left: 35%; width: 3px; height: 3px; animation-delay: 0.5s; }
-.star:nth-child(5)  { top: 50%; left: 45%; width: 2px; height: 2px; animation-delay: 1.5s; }
-.star:nth-child(6)  { top: 60%; left: 55%; width: 3px; height: 3px; animation-delay: 2.5s; }
-.star:nth-child(7)  { top: 70%; left: 65%; width: 4px; height: 4px; animation-delay: 3s; }
-.star:nth-child(8)  { top: 80%; left: 75%; width: 2px; height: 2px; animation-delay: 0.8s; }
-.star:nth-child(9)  { top: 90%; left: 85%; width: 3px; height: 3px; animation-delay: 1.2s; }
-.star:nth-child(10) { top: 15%; left: 90%; width: 3px; height: 3px; animation-delay: 2.2s; }
-.star:nth-child(11) { top: 25%; left: 80%; width: 2px; height: 2px; animation-delay: 0.6s; }
-.star:nth-child(12) { top: 35%; left: 70%; width: 4px; height: 4px; animation-delay: 1.8s; }
-.star:nth-child(13) { top: 45%; left: 60%; width: 3px; height: 3px; animation-delay: 2.4s; }
-.star:nth-child(14) { top: 55%; left: 50%; width: 2px; height: 2px; animation-delay: 0.3s; }
-.star:nth-child(15) { top: 65%; left: 40%; width: 3px; height: 3px; animation-delay: 1.3s; }
+.star:nth-child(1)  { top: 10%; left: 5%;  width: 7px; height: 5px; animation-delay: 0s; }
+.star:nth-child(2)  { top: 20%; left: 15%; width: 5px; height: 7px; animation-delay: 1s; }
+.star:nth-child(3)  { top: 30%; left: 25%; width: 6px; height: 6px; animation-delay: 2s; }
+.star:nth-child(4)  { top: 40%; left: 35%; width: 6px; height: 5px; animation-delay: 0.5s; }
+.star:nth-child(5)  { top: 50%; left: 45%; width: 4px; height: 6px; animation-delay: 1.5s; }
+.star:nth-child(6)  { top: 60%; left: 55%; width: 3px; height: 5px; animation-delay: 2.5s; }
+.star:nth-child(7)  { top: 70%; left: 65%; width: 5px; height: 5px; animation-delay: 3s; }
+.star:nth-child(8)  { top: 80%; left: 75%; width: 4px; height: 6px; animation-delay: 0.8s; }
+.star:nth-child(9)  { top: 90%; left: 85%; width: 5px; height: 6px; animation-delay: 1.2s; }
+.star:nth-child(10) { top: 15%; left: 90%; width: 6px; height: 5px; animation-delay: 2.2s; }
+.star:nth-child(11) { top: 25%; left: 80%; width: 3px; height: 5px; animation-delay: 0.6s; }
+.star:nth-child(12) { top: 35%; left: 70%; width: 4px; height: 5px; animation-delay: 1.8s; }
+.star:nth-child(13) { top: 45%; left: 60%; width: 6px; height: 4px; animation-delay: 2.4s; }
+.star:nth-child(14) { top: 55%; left: 50%; width: 5px; height: 6px; animation-delay: 0.3s; }
+.star:nth-child(15) { top: 65%; left: 40%; width: 5px; height: 6px; animation-delay: 1.3s; }
 .star:nth-child(16) { top: 75%; left: 30%; width: 4px; height: 4px; animation-delay: 2.9s; }
 .star:nth-child(17) { top: 85%; left: 20%; width: 2px; height: 2px; animation-delay: 1.7s; }
 .star:nth-child(18) { top: 95%; left: 10%; width: 3px; height: 3px; animation-delay: 0.2s; }
@@ -81,7 +112,7 @@ body::before {
 .star:nth-child(20) { top: 22%; left: 60%; width: 3px; height: 3px; animation-delay: 0.7s; }
 .star:nth-child(21) { top: 32%; left: 20%; width: 4px; height: 4px; animation-delay: 1.1s; }
 .star:nth-child(22) { top: 42%; left: 10%; width: 3px; height: 3px; animation-delay: 2.6s; }
-.star:nth-child(23) { top: 52%; left: 90%; width: 2px; height: 2px; animation-delay: 0.9s; }
+.star:nth-child(23) { top: 52%; left: 90%; width: 6px; height: 7px; animation-delay: 0.9s; }
 .star:nth-child(24) { top: 62%; left: 5%;  width: 3px; height: 3px; animation-delay: 1.6s; }
 
 
@@ -96,7 +127,7 @@ body::before {
   left: -400px; /* off screen start */
   width: 200px; /* smaller image size */
   z-index: 3;
-  animation: floatAcross 28s linear infinite;
+  animation: floatAcross 20s linear infinite;
   pointer-events: none; /* So it doesn’t block clicks */
 }
 
@@ -109,76 +140,271 @@ body::before {
 /* -----------------------------------
    🌐 NAVBAR STYLES
 ----------------------------------- */
-nav {
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px) brightness(1.1);
-  border-bottom: 2px solid white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* Navbar container */
+.navbar {
+  display: flex; /* Arrange left and right content side by side */
+  justify-content: space-between; /* Push left and right sections apart */
+  align-items: center; /* Vertically center all children */
+  padding: 20px 30px; /* Space inside the navbar (top/bottom, left/right) */
+  height: 40x; /* Total navbar height */
+  background-color: rgba(26, 26, 46, 0.4); /* Semi-transparent dark background */
+  backdrop-filter: blur(3px); /* Apply blur effect for glass look */
+  -webkit-backdrop-filter: blur(3px); /* Safari browser blur support */
+  color: white; /* Text/icon color */
+  position: fixed; /* Keep navbar fixed at the top */
+  top: 0; /* Align to top edge of page */
+  width: 100%; /* Full screen width */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional soft bottom border */
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
+/* Left side of the navbar (logo + site name) */
+.nav-left {
+  display: flex; /* Arrange logo and name side by side */
+  align-items: center; /* Vertically center logo and text */
+  gap: 10px; /* Space between logo and text */
+  margin-left: 60px; /* Push content toward the center from the left edge */
+}
+
+/* Right side of navbar (search and tab menu) */
+.nav-right {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 15px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-right: 60px; /* Add spacing from the right edge */
 }
 
+/* Logo image inside navbar */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #f0f0f0;
+  height: 40px; /* Control logo size */
+  vertical-align: middle; /* Align better with text baseline */
 }
 
-.nav-logo {
-  height: 40px;
-  margin-right: 10px;
+/* "Veltheris" site name */
+.site-name {
+  font-size: 1.5rem; /* Set text size */
+  font-weight: bold; /* Make it bolder */
+  line-height: 1; /* Prevent unwanted vertical spacing */
 }
 
-.nav-title {
-  font-size: 1.5rem;
+/* ================= NAVBAR RIGHT SIDE ICONS ================= */
+.nav-right {
+  display: flex; /* Align icons side by side */
+  align-items: center; /* Vertically center them */
+  gap: 15px; /* Space between search and menu icon */
+}
+
+
+/* -----------------------------------
+   🌟 ICONS
+----------------------------------- */
+/* Style for both icons */
+.search-icon,
+.menu-icon {
+  font-size: 1.6rem; /* Consistent size */
+  color: white; /* Matches navbar color */
+  cursor: pointer; /* Hand on hover */
+  width: 30px; /* Fixed width ensures no shifting */
+  text-align: center; /* Center the icon within the width */
+  transition: transform 0.2s ease; /* Hover animation */
+}
+
+.search-icon:hover,
+.menu-icon:hover {
+  transform: scale(1.2); /* Hover effect */
+}
+
+
+
+/* -----------------------------------
+   🌟 SEARCH BAR
+----------------------------------- */
+
+/* ========== SEARCH CONTAINER ========== */
+.search-container {
+  display: flex;                 /* Align icon and input horizontally */
+  align-items: center;          /* Vertically center both */
+  gap: 8px;                     /* Space between icon and input */
+  position: relative;           /* Needed if you want to add positioning later */
+}
+
+/* ========== SEARCH BAR (HIDDEN INITIALLY) ========== */
+.search-bar {
+  display: none;                /* Hidden until icon is clicked */
+  background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+  border: 1px solid #fff;       /* White border */
+  color: white;                 /* Text color */
+  padding: 6px 10px;            /* Inner space */
+  border-radius: 5px;           /* Rounded corners */
+  font-size: 0.9rem;            /* Text size */
+  width: 160px;                 /* Bar width */
+  outline: none;                /* Remove default focus outline */
+}
+
+/* ========== SEARCH BAR SHOWN ========== */
+.search-bar.show {
+  display: inline-block;        /* Show input when toggled */
+}
+
+.search-bar:focus {
+  border-color: #4fd1c5;        /* Cyan border when active */
+  box-shadow: 0 0 5px #4fd1c5;  /* Glow around the input */
+}
+
+/* -----------------------------------
+   🌟 MENU SECTION
+----------------------------------- */
+
+/* === Slide Menu Base Style === */
+.slide-menu {
+  position: fixed;                /* Fixed position on screen */
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark transparent background */
   color: white;
-  margin-right: auto;
-  padding-left: 10px;
+  display: none;                 /* ❌ Hidden by default */
+  flex-direction: column;
+  padding: 15px;                /* Reduced vertical padding */
+  gap: 15px;
+  z-index: 1000;
+  overflow-y: auto;                  /* Vertical scroll only */
+  max-height: 100vh;                /* Don't grow taller than the viewport */
+  scrollbar-width: thin;            /* For Firefox - thin scrollbar */
+  scrollbar-color: #888 transparent; /* Scrollbar color for Firefox */
+  overflow-y: auto;                 /* 👈 Allows scrolling if content overflows */
 }
 
-.nav-links,
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+/* For Chrome, Edge, Safari */
+.slide-menu::-webkit-scrollbar {
+  width: 6px;                       /* Thin scrollbar */
 }
 
-nav li {
-  margin-left: 10px;
+.slide-menu::-webkit-scrollbar-thumb {
+  background-color: #888;          /* Scrollbar thumb color */
+  border-radius: 10px;             /* Rounded edges */
 }
 
-nav a,
-nav ul li a {
-  color: #f0f0f0;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
+.slide-menu::-webkit-scrollbar-track {
+  background: transparent;         /* Track background */
 }
 
-nav a:hover,
-nav ul li a:hover {
-  color: #ffd700;
-  background-color: rgba(255, 255, 255, 0.3);
+/* When active, show the menu as flex */
+.slide-menu.active {
+  display: flex;                 /* ✅ Show the menu when .active is added */
 }
+
+/* Slide Menu Link Style (EDITS THINGS IN THE MENU) */
+.slide-menu a {
+  color: white;                /* White text */
+  text-decoration: none;       /* No underline */
+  font-size: 1.2rem;           /* Slightly bigger text */
+  padding: 8px 0;              /* Space between each link */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Soft divider */
+  transition: color 0.3s ease; /* Smooth hover color change */
+}
+
+/* Hover effect for links */
+.slide-menu a:hover {
+  color: #4fd1c5;              /* Cyan hover color */
+}
+
+/* Close (X) icon inside the slide menu */
+.close-menu {
+  font-size: 1.6rem;               /* Same size as menu/search icons */
+  color: white;                   /* White color */
+  align-self: flex-end;           /* Push to top right of the menu */
+  cursor: pointer;                /* Hand on hover */
+  margin-bottom: 10px;            /* Space below the X before links */
+  transition: transform 0.2s ease; /* Hover effect */
+}
+
+.close-menu:hover {
+  transform: scale(1.1);          /* Slight grow on hover */
+}
+
+/* Image at the bottom of the menu section */
+.menu-bottom-image {
+  display: block;           /* Make sure it takes full width line */
+  width: 80%;               /* Make it nicely sized */
+  max-height: 100px;        /* Keep it tidy */
+  margin: 30px auto 10px;   /* Space around it, center horizontally */
+  object-fit: contain;      /* Keep image proportions */
+  opacity: 0.9;             /* Soft transparency if you like */
+}
+
+
+/* -----------------------------------
+   🫡 SUB-MENU SECTION
+----------------------------------- */
+/* Container for each menu item that has a submenu */
+.menu-item {
+  position: relative;              /* Needed for positioning submenu */
+  display: flex;                   /* Horizontal layout for icon if needed */
+  flex-direction: column;         /* Stack main link and submenu vertically */
+  margin-bottom: 10px;            /* Space between menu items */
+}
+
+/* Style for the main clickable link (like "Home") */
+.menu-item .main-link {
+  color: white;                   /* White text */
+  text-decoration: none;          /* Remove underline */
+  font-size: 1.2rem;              /* Slightly larger text */
+  padding: 8px 12px;              /* Padding around the link */
+  cursor: pointer;                /* Pointer cursor on hover */
+  transition: background 0.3s;    /* Smooth hover effect */
+}
+
+/* Hover effect for main links */
+.menu-item .main-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light transparent hover */
+  border-radius: 5px;                         /* Slight rounding on hover */
+}
+
+/* Submenu container (initially hidden) */
+.submenu {
+  display: none;                   /* Hidden by default */
+  flex-direction: column;         /* Stack submenu links vertically */
+  margin-left: 20px;              /* Slight indent to visually separate */
+  margin-top: 5px;                /* Space from main link */
+}
+
+/* Individual submenu link styles */
+.submenu a {
+  color: #ccc;                    /* Lighter gray color */
+  text-decoration: none;         /* No underline */
+  font-size: 1rem;                /* Standard text size */
+  padding: 6px 10px;              /* Padding around submenu links */
+  transition: background 0.3s;    /* Smooth hover effect */
+  border-radius: 4px;             /* Rounded corners */
+}
+
+/* Hover effect for submenu links */
+.submenu a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light highlight on hover */
+}
+
+/* Class to show the submenu when active */
+.menu-item.active .submenu {
+  display: flex;                  /* Show submenu when parent has 'active' class */
+}
+
+/* Add arrow after each main-link */
+.menu-item .main-link::after {
+  content: "▶";                        /* Arrow pointing right */
+  margin-left: 8px;                    /* Space between text and arrow */
+  font-size: 0.9rem;                   /* Slightly smaller than text */
+  transition: transform 0.3s ease;     /* Smooth rotation */
+  display: inline-block;              /* Needed for transform to work */
+}
+
+/* When the menu-item is active, rotate the arrow */
+.menu-item.active .main-link::after {
+  transform: rotate(90deg);           /* Arrow points down when open */
+}
+
 
 
 /* -----------------------------------
@@ -218,69 +444,84 @@ nav ul li a:hover {
 /* -----------------------------------
    📦 MAIN CONTENT CONTAINER
 ----------------------------------- */
-.main-container {
-  width: 70%;
-  margin: 0 auto;
-  padding: 20px 40px;
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
-  box-sizing: border-box;
-  min-height: 100vh;
-}
 
 .content-wrapper {
-  width: 70%;
+  width: 100%;                /* Full width */
   margin: 0 auto;
-  padding: 2rem;
-  border-left: 2px solid rgba(255, 255, 255, 0.4);
-  border-right: 2px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  border-radius: 10px;
+  padding: 0;                 /* Remove internal spacing */
+  background-color: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  border: none;
 }
 
 
 /* -----------------------------------
    ✨ SCROLL ANIMATION
 ----------------------------------- */
-.animated-section {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-.animated-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 
 /* -----------------------------------
    💬 SPEECH BOX
 ----------------------------------- */
-.speech-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 60px auto;
-  width: fit-content;
-  max-width: 90%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+/* Frame that holds all speech boxes in place */
+.speech-frame {
   position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 350px;           /* 🔽 reduce height from 500px to 350px */
+  margin: 80px auto 0;     /* 🔼 shift higher on the page */
+  overflow: hidden;
 }
 
-.speech-box::after {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 30px;
-  border: 10px solid transparent;
-  border-right-color: white;
+/* Bubble inside the fixed frame */
+.speech-box {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: relative;
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 20px;
+  border: 5px solid gold;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background-image: url("images/scroll-texture.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-family: 'Georgia', serif;
+  color: #2b1b0f;
 }
+
+.speech-container {
+  padding: 60px 20px;
+}
+
+/* Active one becomes visible */
+.speech-box.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+
+.speech-box:hover {
+  transform: translateY(-5px);       /* Slight lift on hover */
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.slide-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
 
 .speaker-img {
   width: 70px;
@@ -322,9 +563,70 @@ nav ul li a:hover {
 ----------------------------------- */
 /* Animation keyframes for the stars */
 @keyframes twinkle {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
 }
+
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(3px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+@keyframes colorShift {
+  0% {
+    background-color: #ffeb3b; /* Yellow */
+    box-shadow: 0 0 6px #ffeb3b, 0 0 12px #fff200;
+  }
+  50% {
+    background-color: #c084fc; /* Soft space purple */
+    box-shadow: 0 0 6px #c084fc, 0 0 12px #a855f7;
+  }
+  100% {
+    background-color: #ffeb3b; /* Back to yellow */
+    box-shadow: 0 0 6px #ffeb3b, 0 0 12px #fff200;
+  }
+}
+
+/* Animation for sliding speech boxes in */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.speech-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Triggered when box is visible in viewport */
+.speech-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeSlideUp 1.2s ease both;
+}
+
 
 /* Animation to make it float across the screen */
 @keyframes floatAcross {
@@ -335,6 +637,7 @@ nav ul li a:hover {
     transform: translateX(120vw);
   }
 }
+
 
 /* -----------------------------------
    📱 RESPONSIVE DESIGN
